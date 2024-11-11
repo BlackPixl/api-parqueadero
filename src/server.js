@@ -1,11 +1,23 @@
 const express = require('express');
 const sequelize = require('./config/database');
+
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./config/swagger');
+
 const parkingRoutes = require('./routes/parkingRoutes');
 
 require('dotenv').config();
 
 const app = express();
+
 app.use(express.json());
+
+// swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
+  explorer: true,
+  customCss: '.swagger-ui .topbar { display: none }',
+  customSiteTitle: "Parking API Documentation"
+}));
 
 app.use('/api/parking', parkingRoutes);
 
