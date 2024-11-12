@@ -41,7 +41,12 @@ DB_NAME=parking_db
 PORT=3000
 ```
 4. Configura la base de datos:  
-Debes configurar una base de datos en MySQL con el nombre "parking_db"
+Debes configurar una base de datos en MySQL con el nombre "parking_db".  
+la aplicación utiliza el usuario "root" y la contraseña "secret". Al mismo tiempo, la aplicación se conecta a la base de datos en localhost:3306.  
+De manera alternativa, se puede ejecutar un contenedor de docker con el siguiente comando:  
+```bash
+docker run -d --name mysql-parking -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=parking_db -p 3306:3306 mysql:5.7
+```  
 
 5. Inicia la aplicación:  
 ```bash
